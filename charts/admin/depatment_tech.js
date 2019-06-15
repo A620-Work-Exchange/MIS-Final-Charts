@@ -4,34 +4,28 @@ var indices = {
     id: 16
 };
 var schema = [
-    { name: '陈老师', index: 0 },
-    { name: '王老师', index: 1 },
-    { name: '刘老师', index: 2 },
-    { name: '赵老师', index: 3 },
-    { name: '钱老师', index: 4 },
-    { name: '孙老师', index: 5 },
-    { name: '李老师', index: 6 },
-    { name: '周老师', index: 7 },
-    { name: '吴老师', index: 8 },
-    { name: '郑老师', index: 9 },
-    { name: '伏老师', index: 10 },
-    { name: '黄老师', index: 11 },
-    { name: '汤老师', index: 12 },
-    { name: '贝老师', index: 13 },
-    { name: '张老师', index: 14 },
-    { name: '潘老师', index: 15 },
-    { name: '房老师', index: 16 }
+    { name: 'name', index: 0 },
+    { name: 'group', index: 1 },
+    { name: '2019', index: 2 },
+    { name: '2017', index: 3 },
+    { name: '2018', index: 4 },
+    { name: '2016', index: 5 },
+    { name: '2015', index: 6 },
+    { name: '2014', index: 7 },
+    { name: '2013', index: 8 },
+    { name: '2012', index: 9 },
+    { name: '2011', index: 10 },
+    { name: '2010', index: 11 },
+    { name: '2009', index: 12 },
+    { name: '2008', index: 13 },
+    { name: '2007', index: 14 },
+    { name: '2006', index: 15 },
+    { name: '年份', index: 16 }
 ];
 
 var groupCategories = [];
 var groupColors = [];
 
-$.get('charts/admin/data/tech.json', function (data) {
-    normalizeData(data);
-
-    myChart.setOption(option = getOption(data));
-
-});
 
 
 function normalizeData(originData) {
@@ -95,7 +89,7 @@ function getOption(data) {
         },
         title: [
             {
-                text: 'Groups',
+                text: '院系',
                 top: 0,
                 left: 0,
                 textStyle: {
