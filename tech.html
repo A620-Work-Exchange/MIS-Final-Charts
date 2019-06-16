@@ -10,7 +10,17 @@
 	</head>
 	<body>
 		<script src="http://code.jquery.com/jquery-latest.js"></script>
-        <script src="js/init.js"></script>
+		<script src="js/init.js"></script>
+		<script src="dist/echarts.min.js"></script>
+		<script src="charts/tech/cour_count.js"></script>
+		<script src="charts/tech/pro_cour.js"></script>
+		<script src="charts/tech/gen_cour.js"></script>
+		<script src="charts/tech/sel_qui_count.js"></script>
+		<script src="charts/tech/cour_pro.js"></script>
+		<script src="charts/tech/depa_hw.js"></script>
+		<script src="charts/tech/score.js"></script>
+		<script src="charts/tech/hw_sq.js"></script>
+		<script src="charts/tech/hw_exce.js"></script>
         
 
 		<!--HEADER-->
@@ -68,7 +78,7 @@
 			</div>
 			<div class="left-content-box  content-box-dark">
 				<img src="img/avatar.svg" alt="" class="uk-border-circle profile-img">
-				<h4 class="uk-text-center uk-margin-remove-vertical text-light" id="name">John Doe</h4>
+				<h4 class="uk-text-center uk-margin-remove-vertical text-light" id="name">whr</h4>
 				
 				<div class="uk-position-relative uk-text-center uk-display-block">
 				    <a href="#" class="uk-text-small uk-text-muted uk-display-block uk-text-center" data-uk-icon="icon: triangle-down; ratio: 0.7">老师</a>
@@ -202,11 +212,11 @@
 				<div class="uk-grid uk-grid-medium" data-uk-grid>
 					
 					<!-- panel -->
-					<div class="uk-width-1-2@l">
+					<div class="uk-width-1-1@l">
 						<div class="uk-card uk-card-default uk-card-small uk-card-hover">
 							<div class="uk-card-header">
 								<div class="uk-grid uk-grid-small">
-									<div class="uk-width-auto"><h4>Sales Chart</h4></div>
+									<div class="uk-width-auto"><h4>课程统计</h4></div>
 									<div class="uk-width-expand uk-text-right panel-icons">
 										<a href="#" class="uk-icon-link" title="Move" data-uk-tooltip data-uk-icon="icon: move"></a>
 										<a href="#" class="uk-icon-link" title="Configuration" data-uk-tooltip data-uk-icon="icon: cog"></a>
@@ -215,8 +225,11 @@
 								</div>
 							</div>
 							<div class="uk-card-body">
-								<div class="chart-container" id="chart_2">
-									
+								<div class="chart-container" id="cour_chart">
+									<script>
+										var cour_count_chart = echarts.init(document.getElementById('cour_chart'));
+										cour_count_chart.setOption(get_cour_count_option())
+									</script>
 
 								</div>
 							</div>
@@ -228,7 +241,7 @@
 						<div class="uk-card uk-card-default uk-card-small uk-card-hover">
 							<div class="uk-card-header">
 								<div class="uk-grid uk-grid-small">
-									<div class="uk-width-auto"><h4>Predictions Chart</h4></div>
+									<div class="uk-width-auto"><h4>2016~2019专业课详情</h4></div>
 									<div class="uk-width-expand uk-text-right panel-icons">
 										<a href="#" class="uk-icon-link" title="Move" data-uk-tooltip data-uk-icon="icon: move"></a>
 										<a href="#" class="uk-icon-link" title="Configuration" data-uk-tooltip data-uk-icon="icon: cog"></a>
@@ -237,8 +250,11 @@
 								</div>
 							</div>
 							<div class="uk-card-body">
-								<div class="chart-container">
-									<canvas id="chart1"></canvas>
+								<div class="chart-container" id="pro_cour_chart">
+									<script>
+										var pro_cour_chart = echarts.init(document.getElementById('pro_cour_chart'));
+										pro_cour_chart.setOption(get_pro_cur_option())
+									</script>
 								</div>
 							</div>
 						</div>
@@ -249,7 +265,7 @@
 						<div class="uk-card uk-card-default uk-card-small uk-card-hover">
 							<div class="uk-card-header">
 								<div class="uk-grid uk-grid-small">
-									<div class="uk-width-auto"><h4>Activity Chart</h4></div>
+									<div class="uk-width-auto"><h4>2015~2019通识详情</h4></div>
 									<div class="uk-width-expand uk-text-right panel-icons">
 										<a href="#" class="uk-icon-link" title="Move" data-uk-tooltip data-uk-icon="icon: move"></a>
 										<a href="#" class="uk-icon-link" title="Configuration" data-uk-tooltip data-uk-icon="icon: cog"></a>
@@ -258,19 +274,22 @@
 								</div>
 							</div>
 							<div class="uk-card-body">
-								<div class="chart-container">
-									<canvas id="chart3"></canvas>
+								<div class="chart-container" id="gen_cour_chart">
+									<script>
+										var gen_cour_chart = echarts.init(document.getElementById('gen_cour_chart'));
+										gen_cour_chart.setOption(get_gen_cur_option())
+									</script>
 								</div>
 							</div>
 						</div>
 					</div>
 					<!-- /panel -->
 					<!-- panel -->
-					<div class="uk-width-1-2@s uk-width-1-3@l uk-width-1-4@xl">
+					<div class="uk-width-1-1@s uk-width-1-1@l uk-width-1-1@xl">
 						<div class="uk-card uk-card-default uk-card-small uk-card-hover">
 							<div class="uk-card-header">
 								<div class="uk-grid uk-grid-small">
-									<div class="uk-width-auto"><h4>Distribution Chart</h4></div>
+									<div class="uk-width-auto"><h4>2015~2019选退课</h4></div>
 									<div class="uk-width-expand uk-text-right panel-icons">
 										<a href="#" class="uk-icon-link" title="Move" data-uk-tooltip data-uk-icon="icon: move"></a>
 										<a href="#" class="uk-icon-link" title="Configuration" data-uk-tooltip data-uk-icon="icon: cog"></a>
@@ -279,19 +298,22 @@
 								</div>
 							</div>
 							<div class="uk-card-body">
-								<div class="chart-container">
-									<canvas id="chart4"></canvas>
+								<div class="chart-container" id="sel_qui_chart">
+									<script>
+										var sel_qui_chart = echarts.init(document.getElementById('sel_qui_chart'));
+										sel_qui_chart.setOption(get_sel_qui_option())
+									</script>
 								</div>
 							</div>
 						</div>
 					</div>
 					<!-- /panel -->
 					<!-- panel -->
-					<div class="uk-width-1-2@s uk-width-1-3@l uk-width-1-4@xl">
+					<div class="uk-width-1-1@s uk-width-1-1@l uk-width-1-1@xl">
 						<div class="uk-card uk-card-default uk-card-small uk-card-hover">
 							<div class="uk-card-header">
 								<div class="uk-grid uk-grid-small">
-									<div class="uk-width-auto"><h4>Population Chart</h4></div>
+									<div class="uk-width-auto"><h4>课程人数</h4></div>
 									<div class="uk-width-expand uk-text-right panel-icons">
 										<a href="#" class="uk-icon-link" title="Move" data-uk-tooltip data-uk-icon="icon: move"></a>
 										<a href="#" class="uk-icon-link" title="Configuration" data-uk-tooltip data-uk-icon="icon: cog"></a>
@@ -300,13 +322,218 @@
 								</div>
 							</div>
 							<div class="uk-card-body">
-								<div class="chart-container">
-									<canvas id="chart5"></canvas>
+								<h4>课程选择 &nbsp;&nbsp;&nbsp;&nbsp;
+									<select>
+										<option value="volvo">操作系统</option>
+										<option value="saab">计网</option>
+										<option value="opel">数据库</option>
+										<option value="audi">计思</option>
+										<option value="audi">软工一</option>
+										<option value="audi">软工二</option>
+										<option value="audi">AI导论</option>
+									</select></h4>
+								<div class="chart-container" id="cour_pro_chart">
+									
+										<script>
+											var cour_pro_chart = echarts.init(document.getElementById('cour_pro_chart'));
+											cour_pro_chart.setOption(get_cour_pro_option())
+										</script>
 								</div>
 							</div>
 						</div>
 					</div>
 					<!-- /panel -->
+					<div class="uk-width-1-1@s uk-width-1-1@l uk-width-1-1@xl">
+						<div class="uk-card uk-card-default uk-card-small uk-card-hover">
+							<div class="uk-card-header">
+								<div class="uk-grid uk-grid-small">
+									<div class="uk-width-auto">
+										<h4>作业详情分析</h4>
+									</div>
+									<div class="uk-width-expand uk-text-right panel-icons">
+										<a href="#" class="uk-icon-link" title="Move" data-uk-tooltip data-uk-icon="icon: move"></a>
+										<a href="#" class="uk-icon-link" title="Configuration" data-uk-tooltip data-uk-icon="icon: cog"></a>
+										<a href="#" class="uk-icon-link" title="Close" data-uk-tooltip data-uk-icon="icon: close"></a>
+									</div>
+								</div>
+							</div>
+							<div class="uk-card-body">
+								<h4>课程选择 &nbsp;&nbsp;&nbsp;&nbsp;
+									<select>
+										<option value="volvo">操作系统</option>
+										<option value="saab">计网</option>
+										<option value="opel">数据库</option>
+										<option value="audi">计思</option>
+										<option value="audi">软工一</option>
+										<option value="audi">软工二</option>
+										<option value="audi">AI导论</option>
+									</select></h4>
+								<div class="chart-container" id="hw_sq_chart">
+					
+									<script>
+										var hw_sq_chart = echarts.init(document.getElementById('hw_sq_chart'));
+										hw_sq_chart.setOption(get_hw_sq_option())
+									</script>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="uk-width-1-1@s uk-width-1-1@l uk-width-1-1@xl">
+						<div class="uk-card uk-card-default uk-card-small uk-card-hover">
+							<div class="uk-card-header">
+								<div class="uk-grid uk-grid-small">
+									<div class="uk-width-auto">
+										<h4>异常作业分析</h4>
+									</div>
+									<div class="uk-width-expand uk-text-right panel-icons">
+										<a href="#" class="uk-icon-link" title="Move" data-uk-tooltip data-uk-icon="icon: move"></a>
+										<a href="#" class="uk-icon-link" title="Configuration" data-uk-tooltip data-uk-icon="icon: cog"></a>
+										<a href="#" class="uk-icon-link" title="Close" data-uk-tooltip data-uk-icon="icon: close"></a>
+									</div>
+								</div>
+							</div>
+							<div class="uk-card-body">
+								
+								<div class="chart-container" id="hw_exce_chart">
+					
+									<script>
+										var hw_exce_chart = echarts.init(document.getElementById('hw_exce_chart'));
+										hw_exce_chart.setOption(get_hw_exce_option())
+									</script>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="uk-width-1-1@s uk-width-1-1@l uk-width-1-1@xl">
+						<div class="uk-card uk-card-default uk-card-small uk-card-hover">
+							<div class="uk-card-header">
+								<div class="uk-grid uk-grid-small">
+									<div class="uk-width-auto">
+										<h4>各院系作业完成情况</h4>
+									</div>
+									<div class="uk-width-expand uk-text-right panel-icons">
+										<a href="#" class="uk-icon-link" title="Move" data-uk-tooltip data-uk-icon="icon: move"></a>
+										<a href="#" class="uk-icon-link" title="Configuration" data-uk-tooltip data-uk-icon="icon: cog"></a>
+										<a href="#" class="uk-icon-link" title="Close" data-uk-tooltip data-uk-icon="icon: close"></a>
+									</div>
+								</div>
+							</div>
+							<div class="uk-card-body">
+								<div class="chart-container" id="depa_hw_chart">
+									<script>
+										 var depa_hw_chart = echarts.init(document.getElementById('depa_hw_chart'));
+
+
+
+											$.get('charts/admin/data/depart.json', function (data) {
+												normalizeData(data);
+
+												depa_hw_chart.setOption(option = getOption(data));
+
+											});
+									</script>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="uk-card-body">
+								<div class="chart-container" id="depa_hw_chart">
+									<script>
+										 var depa_hw_chart = echarts.init(document.getElementById('depa_hw_chart'));
+
+
+
+											$.get('charts/admin/data/depart.json', function (data) {
+												normalizeData(data);
+
+												depa_hw_chart.setOption(option = getOption(data));
+
+											});
+									</script>
+								</div>
+							</div>
+						</div>
+					
+				
+					<div class="uk-width-1-1@s uk-width-1-1@l uk-width-1-1@xl">
+						<div class="uk-card uk-card-default uk-card-small uk-card-hover">
+							<div class="uk-card-header">
+								<div class="uk-grid uk-grid-small">
+									<div class="uk-width-auto">
+										<h4>各院系成绩情况</h4>
+									</div>
+									<div class="uk-width-expand uk-text-right panel-icons">
+										<a href="#" class="uk-icon-link" title="Move" data-uk-tooltip data-uk-icon="icon: move"></a>
+										<a href="#" class="uk-icon-link" title="Configuration" data-uk-tooltip data-uk-icon="icon: cog"></a>
+										<a href="#" class="uk-icon-link" title="Close" data-uk-tooltip data-uk-icon="icon: close"></a>
+									</div>
+								</div>
+							</div>
+							
+					<div class="uk-card-body">
+						<div class="chart-container" id="depa_score_chart">
+							<script>
+								var depa_score_chart = echarts.init(document.getElementById('depa_score_chart'));
+
+
+
+								$.get('charts/admin/data/depart.json', function (data) {
+									normalizeData(data);
+
+									depa_score_chart.setOption(option = getOption(data));
+
+								});
+							</script>
+						</div>
+					</div>
+					</div>
+					</div>
+					<div class="uk-width-1-1@s uk-width-1-1@l uk-width-1-1@xl">
+						<div class="uk-card uk-card-default uk-card-small uk-card-hover">
+							<div class="uk-card-header">
+								<div class="uk-grid uk-grid-small">
+									<div class="uk-width-auto">
+										<h4>课程成绩情况</h4>
+									</div>
+									<div class="uk-width-expand uk-text-right panel-icons">
+										<a href="#" class="uk-icon-link" title="Move" data-uk-tooltip data-uk-icon="icon: move"></a>
+										<a href="#" class="uk-icon-link" title="Configuration" data-uk-tooltip data-uk-icon="icon: cog"></a>
+										<a href="#" class="uk-icon-link" title="Close" data-uk-tooltip data-uk-icon="icon: close"></a>
+									</div>
+								</div>
+							</div>
+							<div class="uk-card-body">
+								<h4>课程选择 &nbsp;&nbsp;&nbsp;&nbsp;
+									<select>
+										<option value="volvo">操作系统</option>
+										<option value="saab">计网</option>
+										<option value="opel">数据库</option>
+										<option value="audi">计思</option>
+										<option value="audi">软工一</option>
+										<option value="audi">软工二</option>
+										<option value="audi">AI导论</option>
+									</select></h4>
+								<div class="chart-container" id="score_chart">
+					
+									<script>
+										var score_chart = echarts.init(document.getElementById('score_chart'));
+										score_chart.setOption(get_score_option())
+									</script>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+					</div>
+
+					
+
 				</div>
 				<footer class="uk-section uk-section-small uk-text-center">
 					<hr>

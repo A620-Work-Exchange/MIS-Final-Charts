@@ -1,13 +1,10 @@
 var data = [
-    [[90, 100, 170968691, '第一次作业', 1], [70, 77, 170968691, '第二次作业', 2]],
-    [[60, 50, 170968691, '第三次作业', 3], [0, 0, 1709686912, '第四次作业', 4]],
-    [[100, 100, 170968691, '第五次作业', 5], [100, 67, 170968691, '第六次作业',6]],
-    [[100, 90, 170968691, '第七次作业', 7], [70, 60, 170968691, '第八次作业', 8]],
-    [[60, 50, 1709686912, '第九次作业', 9], [100, 80, 17096869, '第十次作业', 10]],
-    [[60, 50, 1709686912, '第九次作业', 9], [100, 80, 17096869, '第十次作业', 10]],
+    [[100, 10, 170968691, '软工一', 1], [200, 10, 170968691, '软工二', 2]],
+    [[60, 20, 170968691, '计思', 3], [100, 0, 1709686912, '计网', 4]],
+    [[200, 60, 170968691, '数据结构', 5]],
 ];
 
-hw_option = {
+sel_qui_option = {
     backgroundColor: new echarts.graphic.RadialGradient(0.3, 0.3, 0.8, [{
         offset: 0,
         color: '#f7f8fa'
@@ -16,14 +13,14 @@ hw_option = {
         color: '#cdd0d5'
     }]),
     title: {
-        text: '操作系统1~4次作业完成情况'
+        text: '2015~2019选退课情况'
     },
     legend: {
         right: 10,
         data: ['bad', 'good']
     },
     xAxis: {
-        name: '完成率%',
+        name: '选课人数',
         splitLine: {
             lineStyle: {
                 type: 'dashed'
@@ -31,7 +28,7 @@ hw_option = {
         }
     },
     yAxis: {
-        name: '正确率%',
+        name: '退课人数',
         splitLine: {
             lineStyle: {
                 type: 'dashed'
@@ -40,7 +37,6 @@ hw_option = {
         scale: true
     },
     series: [{
-        name: '1990',
         data: data[0],
         type: 'scatter',
         symbolSize: function (data) {
@@ -70,7 +66,6 @@ hw_option = {
             }
         }
     }, {
-        name: '2015',
         data: data[1],
         type: 'scatter',
         symbolSize: function (data) {
@@ -102,6 +97,6 @@ hw_option = {
     }]
 };
 
-function get_hw_option() {
-    return hw_option;
+function get_sel_qui_option() {
+    return sel_qui_option;
 }
