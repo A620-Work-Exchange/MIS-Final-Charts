@@ -12,6 +12,7 @@ $("#login").on('click', function () {
 function login() {
     var user = $('#Username').val();
    // var password = $('#Password').val();
+
     console.log(user);
     if (user == "admin") {
         window.location.href = "admin.html"
